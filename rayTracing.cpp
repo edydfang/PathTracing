@@ -124,7 +124,7 @@ namespace smallpt {
 		const uint32_t h = 480;
 
 		const Vector3 eye = Vector3(50.0, 52.0, 295.6);
-		const Vector3 gaze = Normalize(Vector3(0.0, -0.042612, -1.0));
+		const Vector3 gaze = Normalize(Vector3(0.0, -0.05, -1.0));// -0.042612
 		const double fov = 0.5135;
 		const Vector3 cx = Vector3(w * fov / h, 0.0, 0.0);
 		const Vector3 cy = Normalize(cx.Cross(gaze)) * fov;
@@ -133,6 +133,7 @@ namespace smallpt {
 
 #pragma omp parallel for schedule(static)
 		for (int y = 0; y < static_cast< int >(h); ++y) { // pixel row
+		fprintf(stderr,"\rRendering (%d spp) %5.2f%%",nb_samples*4,100.*y/(h-1));
 			for (size_t x = 0; x < w; ++x) { // pixel column
 				for (size_t sy = 0, i = (h - 1 - y) * w + x; sy < 2; ++sy) { // 2 subpixel row
 					for (size_t sx = 0; sx < 2; ++sx) { // 2 subpixel column
