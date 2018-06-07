@@ -27,7 +27,7 @@ namespace smallpt {
 
 	constexpr Sphere g_spheres[] = {
 		Sphere(1e5,  Vector3(1e5 + 1, 40.8, 81.6),   Vector3(),   Vector3(0.75,0.25,0.25), Reflection_t::Diffuse),	 //Left
-		Sphere(1e5,  Vector3(-1e5 + 99, 40.8, 81.6), Vector3(),   Vector3(0.25,0.25,0.75), Reflection_t::Diffuse),	 //Right
+		// Sphere(1e5,  Vector3(-1e5 + 99, 40.8, 81.6), Vector3(),   Vector3(0.25,0.25,0.75), Reflection_t::Diffuse),	 //Right
 		Sphere(1e5,  Vector3(50, 40.8, 1e5),         Vector3(),   Vector3(0.75),           Reflection_t::Diffuse),	 //Back
 		Sphere(1e5,  Vector3(50, 40.8, -1e5 + 170),  Vector3(),   Vector3(),               Reflection_t::Diffuse),	 //Front
 		Sphere(1e5,  Vector3(50, 1e5, 81.6),         Vector3(),   Vector3(0.75),           Reflection_t::Diffuse),	 //Bottom
@@ -62,7 +62,7 @@ namespace smallpt {
 	static const Vector3 Radiance(const Ray &ray, RNG &rng) noexcept {
 		Ray r = ray;
 		Vector3 L;
-		Vector3 F(1.0);
+		Vector3 F(1.0); // factor of light energy
 
 		while (true) {
 			size_t id;
@@ -118,10 +118,10 @@ namespace smallpt {
 	}
 
 	inline void Render(uint32_t nb_samples) noexcept {
-		RNG rng;
+		RNG rng; // random number generator
 
-		const uint32_t w = 640;
-		const uint32_t h = 480;
+		const uint32_t w = 320; //640
+		const uint32_t h = 240; //480
 
 		const Vector3 eye = Vector3(50.0, 52.0, 295.6);
 		const Vector3 gaze = Normalize(Vector3(0.0, -0.05, -1.0));// -0.042612
@@ -131,9 +131,11 @@ namespace smallpt {
 
 		Vector3 * const Ls = new Vector3[w * h];
 
+		int loop_count = 0;
 #pragma omp parallel for schedule(static)
 		for (int y = 0; y < static_cast< int >(h); ++y) { // pixel row
-		fprintf(stderr,"\rRendering (%d spp) %5.2f%%",nb_samples*4,100.*y/(h-1));
+		loop_count += 1;
+		fprintf(stderr,"\rRendering (%d spp) %5.2f%%",nb_samples*4,100.*loop_count/h);
 			for (size_t x = 0; x < w; ++x) { // pixel column
 				for (size_t sy = 0, i = (h - 1 - y) * w + x; sy < 2; ++sy) { // 2 subpixel row
 					for (size_t sx = 0; sx < 2; ++sx) { // 2 subpixel column
@@ -161,7 +163,7 @@ namespace smallpt {
 }
 
 int main(int argc, char *argv[]) {
-	const uint32_t nb_samples = (argc == 2) ? atoi(argv[1]) / 4 : 1;
+	const uint32_t nb_samples = (argc == 2) ? atoi(argv[1]) / 4 : 20; // 1
 	smallpt::Render(nb_samples);
 
 	return 0;

@@ -12,52 +12,67 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt {
+namespace smallpt
+{
 
-	struct Ray final {
+//-------------------------------------------------------------------------
+// Declarations and Definitions: Reflection_t
+//-------------------------------------------------------------------------
 
-	public:
+enum struct Reflection_t
+{
+	Diffuse,
+	Specular,
+	Refractive
+};
 
-		//---------------------------------------------------------------------
-		// Constructors and Destructors
-		//---------------------------------------------------------------------
+struct Ray final
+{
 
-		constexpr explicit Ray(Vector3 o, Vector3 d,
-			double tmin = 0.0, double tmax = INFINITY, 
-			uint32_t depth = 0) noexcept
-			: m_o(std::move(o)), m_d(std::move(d)),
-			m_tmin(tmin), m_tmax(tmax), m_depth(depth) {};
-		constexpr Ray(const Ray &ray) noexcept = default;
-		constexpr Ray(Ray &&ray) noexcept = default;
-		~Ray() = default;
+  public:
+	//---------------------------------------------------------------------
+	// Constructors and Destructors
+	//---------------------------------------------------------------------
 
-		//---------------------------------------------------------------------
-		// Assignment Operators
-		//---------------------------------------------------------------------
+	constexpr explicit Ray(Vector3 o, Vector3 d,
+						   double tmin = 0.0, double tmax = INFINITY,
+						   uint32_t depth = 0) noexcept
+		: m_o(std::move(o)), m_d(std::move(d)),
+		  m_tmin(tmin), m_tmax(tmax), m_depth(depth){};
+	constexpr Ray(const Ray &ray) noexcept = default;
+	constexpr Ray(Ray &&ray) noexcept = default;
+	~Ray() = default;
 
-		constexpr Ray &operator=(const Ray &ray) = default;
-		constexpr Ray &operator=(Ray &&ray) = default;
+	//---------------------------------------------------------------------
+	// Assignment Operators
+	//---------------------------------------------------------------------
 
-		//---------------------------------------------------------------------
-		// Member Methods
-		//---------------------------------------------------------------------
+	constexpr Ray &operator=(const Ray &ray) = default;
+	constexpr Ray &operator=(Ray &&ray) = default;
 
-		constexpr const Vector3 operator()(double t) const { 
-			return m_o + m_d * t; 
-		}
+	//---------------------------------------------------------------------
+	// Member Methods
+	//---------------------------------------------------------------------
 
-		friend inline std::ostream &operator<<(std::ostream& os, const Ray &r) {
-			os << "o: " << r.m_o << std::endl;
-			os << "d: " << r.m_d << std::endl;
-			return os;
-		}
+	constexpr const Vector3 operator()(double t) const
+	{
+		// generate vector using direction, position and t
+		return m_o + m_d * t;
+	}
 
-		//---------------------------------------------------------------------
-		// Member Variables
-		//---------------------------------------------------------------------
+	friend inline std::ostream &operator<<(std::ostream &os, const Ray &r)
+	{
+		os << "o: " << r.m_o << std::endl;
+		os << "d: " << r.m_d << std::endl;
+		return os;
+	}
 
-		Vector3 m_o, m_d;
-		mutable double m_tmin, m_tmax;
-		uint32_t m_depth;
-	};
-}
+	//---------------------------------------------------------------------
+	// Member Variables
+	//---------------------------------------------------------------------
+
+	Vector3 m_o, m_d;
+	mutable double m_tmin, m_tmax;
+	uint32_t m_depth;
+};
+} // namespace smallpt
