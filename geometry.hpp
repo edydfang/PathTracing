@@ -19,6 +19,13 @@ namespace smallpt
 // Declarations and Definitions: Reflection_t
 //-------------------------------------------------------------------------
 
+enum struct AABB_t
+{
+	XOZ,
+	XOY,
+	YOZ
+};
+
 enum struct Reflection_t
 {
 	Diffuse,

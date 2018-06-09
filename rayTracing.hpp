@@ -6,5 +6,6 @@
 
 #include "sampling.hpp"
 #include "sphere.hpp"
+#include "aabb.hpp"
 #include "specular.hpp"
 #include "imageio.hpp"

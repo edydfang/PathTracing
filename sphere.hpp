@@ -97,7 +97,8 @@ struct Sphere final : public Hittable
 		return false;
 	}
 
-	Vector3 get_intersection_normal(const Ray &ray) const {
+	Vector3 get_intersection_normal(const Ray &ray) const
+	{
 		return Normalize(ray(ray.m_tmax) - m_p);
 	}
 
