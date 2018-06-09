@@ -30,7 +30,8 @@ enum struct Oriented_axis
 {
 	X_axis,
 	Y_axis,
-	Z_axis
+	Z_axis,
+	NA
 };
 
 enum struct Reflection_t
