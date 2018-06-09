@@ -26,6 +26,13 @@ enum struct AABB_t
 	YOZ
 };
 
+enum struct Oriented_axis
+{
+	X_axis,
+	Y_axis,
+	Z_axis
+};
+
 enum struct Reflection_t
 {
 	Diffuse,
