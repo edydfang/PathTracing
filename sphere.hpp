@@ -6,6 +6,7 @@
 #pragma region
 
 #include "geometry.hpp"
+#include "hittable.hpp"
 
 #pragma endregion
 
@@ -27,33 +28,32 @@ namespace smallpt
 // Declarations and Definitions: Sphere
 //-------------------------------------------------------------------------
 
-struct Sphere final
+struct Sphere final : public Hittable
 {
 
 	//---------------------------------------------------------------------
 	// Constructors and Destructors
 	//---------------------------------------------------------------------
 
-	constexpr explicit Sphere(double r, Vector3 p, Vector3 e, Vector3 f,
-							  Reflection_t reflection_t) noexcept
-		: m_r(r), m_p(std::move(p)), m_e(std::move(e)),
-		  m_f(std::move(f)), m_reflection_t(reflection_t) {}
-	constexpr Sphere(const Sphere &sphere) noexcept = default;
-	constexpr Sphere(Sphere &&sphere) noexcept = default;
+	explicit Sphere(double r, Vector3 p, Vector3 e, Vector3 f,
+					Reflection_t reflection_t) noexcept
+		: m_r(r), m_p(std::move(p)), Hittable(e, f, reflection_t) {}
+	Sphere(const Sphere &sphere) noexcept = default;
+	Sphere(Sphere &&sphere) noexcept = default;
 	~Sphere() = default;
 
 	//---------------------------------------------------------------------
 	// Assignment Operators
 	//---------------------------------------------------------------------
 
-	constexpr Sphere &operator=(const Sphere &sphere) = default;
-	constexpr Sphere &operator=(Sphere &&sphere) = default;
+	Sphere &operator=(const Sphere &sphere) = default;
+	Sphere &operator=(Sphere &&sphere) = default;
 
 	//---------------------------------------------------------------------
 	// Member Methods
 	//---------------------------------------------------------------------
 
-	constexpr bool Intersect(const Ray &ray) const
+	bool Intersect(const Ray &ray) const
 	{
 		// (o + t*d - p) . (o + t*d - p) - r*r = 0
 		// <=> (d . d) * t^2 + 2 * d . (o - p) * t + (o - p) . (o - p) - r*r = 0
@@ -97,14 +97,18 @@ struct Sphere final
 		return false;
 	}
 
+	Vector3 get_intersection_normal(const Ray &ray) const {
+		return Normalize(ray(ray.m_tmax) - m_p);
+	}
+
 	//---------------------------------------------------------------------
 	// Member Variables
 	//---------------------------------------------------------------------
 
 	double m_r;
 	Vector3 m_p; // position
-	Vector3 m_e; // emission
-	Vector3 m_f; // reflection
-	Reflection_t m_reflection_t;
+				 // Vector3 m_e; // emission
+				 // Vector3 m_f; // reflection
+				 // Reflection_t m_reflection_t;
 };
 } // namespace smallpt
