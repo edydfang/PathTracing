@@ -73,7 +73,7 @@ struct AABB final : public Hittable
 			return false;
 		}
 		double b_possible = ray.m_o[axis_b] + ray.m_d[axis_b] * t_possible;
-		if (a_possible > bounds[1][axis_b] || a_possible < bounds[0][axis_b])
+		if (b_possible > bounds[1][axis_b] || b_possible < bounds[0][axis_b])
 		{
 			return false;
 		}

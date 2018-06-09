@@ -31,8 +31,7 @@ Hittable *g_spheres[] = {
 	// new Sphere(1e5, Vector3(-1e5 + 99, 40.8, 81.6), Vector3(), Vector3(0.25, 0.25, 0.75), Reflection_t::Diffuse), //Right
 	new AABB(AABB_t::YOZ, Vector3(99, 0, 0), Vector3(99, 81.6, 170), Vector3(), Vector3(0.65, 0.05, 0.05), Reflection_t::Diffuse), //Right
 	// new Sphere(1e5, Vector3(50, 40.8, 1e5), Vector3(), Vector3(0.75), Reflection_t::Diffuse),		  //Back
-	new AABB(AABB_t::XOY, Vector3(1, 0, 0), Vector3(99, 81.6, 0), Vector3(), Vector3(1, 1, 1), Reflection_t::Diffuse), //Back
-	// new Sphere(1e5, Vector3(50, 40.8, -1e5 + 170), Vector3(), Vector3(), Reflection_t::Diffuse),	  //Front
+	new AABB(AABB_t::XOY, Vector3(0, 0, 0), Vector3(99, 81.6, 0), Vector3(), Vector3(1, 1, 1), Reflection_t::Diffuse), //Back
 	new Sphere(1e5, Vector3(50, 1e5, 81.6), Vector3(), Vector3(0.75), Reflection_t::Diffuse),		  //Bottom
 	new Sphere(1e5, Vector3(50, -1e5 + 81.6, 81.6), Vector3(), Vector3(0.75), Reflection_t::Diffuse), //Top
 	new Sphere(16.5, Vector3(27, 16.5, 47), Vector3(), Vector3(0.999), Reflection_t::Specular),		  //Mirror
