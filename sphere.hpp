@@ -101,7 +101,9 @@ struct Sphere final : public Hittable
 	{
 		return Normalize(ray(ray.m_tmax) - m_p);
 	}
-
+    Vector3 get_color(Vector3 intersect_point) const {
+        return Vector3();
+    }
 	//---------------------------------------------------------------------
 	// Member Variables
 	//---------------------------------------------------------------------

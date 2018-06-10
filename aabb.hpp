@@ -19,12 +19,25 @@ struct AABB final : public Hittable
 	Vector3 bounds[2];
 	AABB_t m_aabb_t;
 	short exclusive_axis, axis_a, axis_b;
+
 	//---------------------------------------------------------------------
 	// Constructors and Destructors
 	//---------------------------------------------------------------------
-
+	AABB(AABB_t aabb_t, Vector3 lu, Vector3 rd, Vector3 e, Texture *texture, Reflection_t reflection_t)
+	noexcept
+		: m_aabb_t(aabb_t), Hittable(e, texture, reflection_t) { init_aabb(aabb_t, lu, rd); }
 	explicit AABB(AABB_t aabb_t, Vector3 lu, Vector3 rd, Vector3 e, Vector3 f, Reflection_t reflection_t) noexcept
 		: m_aabb_t(aabb_t), Hittable(e, f, reflection_t)
+	{
+		init_aabb(aabb_t, lu, rd);
+	}
+	AABB(const AABB &aabb)
+	noexcept = default;
+	AABB(AABB &&aabb)
+	noexcept = default;
+	~AABB() = default;
+
+	void init_aabb(AABB_t aabb_t, Vector3 lu, Vector3 rd)
 	{
 		bounds[0] = move(lu);
 		bounds[1] = move(rd);
@@ -43,12 +56,6 @@ struct AABB final : public Hittable
 		axis_a = (exclusive_axis + 1) % 3;
 		axis_b = (exclusive_axis + 2) % 3;
 	}
-	AABB(const AABB &aabb)
-	noexcept = default;
-	AABB(AABB &&aabb)
-	noexcept = default;
-	~AABB() = default;
-
 	// Assignment Operators
 	//---------------------------------------------------------------------
 
@@ -82,7 +89,6 @@ struct AABB final : public Hittable
 		{
 			return false;
 		}
-		// std::cout << "gg" << t_possible << std::endl;
 		ray.m_tmax = t_possible;
 		return true;
 	}
@@ -93,6 +99,14 @@ struct AABB final : public Hittable
 		bool direction = ray.m_d[exclusive_axis] > 0;
 		inter_normal[exclusive_axis] = direction ? -1 : 1;
 		return inter_normal;
+	}
+
+	Vector3 get_color(Vector3 intersect_point) const
+	{
+		// std::cout << intersect_point << bounds[0] << bounds[1] << axis_a << std::endl;
+		double u = (intersect_point[axis_a] - bounds[0][axis_a])/ (bounds[1][axis_a] - bounds[0][axis_a]);
+		double v = (intersect_point[axis_b] - bounds[0][axis_b])/ (bounds[1][axis_b] - bounds[0][axis_b]);
+		return Hittable::m_texture->get_color(u, v);
 	}
 
 }; // namespace smallpt

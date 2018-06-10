@@ -11,3 +11,4 @@
 #include "obbox.hpp"
 #include "specular.hpp"
 #include "imageio.hpp"
+#include "texture.hpp"

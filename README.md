@@ -11,6 +11,14 @@ cmake ..
 ./rayTracing n_samples
 ```
 
+## Debug Build
+
+```shell
+mkdir debug
+cd debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+```
+
 ## TODO List
 
 - [ ] Scene construction

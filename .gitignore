@@ -1,4 +1,5 @@
 build/
 *.ppm
 .vscode/
+debug/
 

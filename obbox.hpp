@@ -26,7 +26,8 @@ struct OBBox final : public Hittable
     double m_rotate_radian;
     Vector3 m_origin, m_edge_lens;
     std::vector<AABB> aabb;
-    // origin: left front bottom intersection
+    // origin: left front bottom intersection (smallest axis magnatitude)
+    // clockwise rotate
     explicit OBBox(Vector3 origin, Vector3 edge_lens, Vector3 e, Vector3 f, Reflection_t reflection_t,
                    double rotate_radian = 0, Oriented_axis o_axis = Oriented_axis::NA) noexcept
         : m_o_axis(o_axis), m_rotate_radian(rotate_radian), m_origin(move(origin)), m_edge_lens(edge_lens), Hittable(e, f, reflection_t)
@@ -61,7 +62,6 @@ struct OBBox final : public Hittable
     {
         const Ray *r;
         // First rotate the ray
-        // std::cout<< "original ray ============\n" << ray <<std::endl;
         if (m_o_axis == Oriented_axis::NA || m_rotate_radian == 0)
         {
             r = &ray;
@@ -69,9 +69,8 @@ struct OBBox final : public Hittable
         else
         {
             const Ray new_ray = Ray(Rotate(m_o_axis, m_rotate_radian, ray.m_o, m_origin),
-                              Rotate(m_o_axis, m_rotate_radian, ray.m_d), ray.m_tmin, ray.m_tmax, ray.m_depth);
+                                    Rotate(m_o_axis, m_rotate_radian, ray.m_d), ray.m_tmin, ray.m_tmax, ray.m_depth);
             r = &new_ray;
-            // std::cout << *r <<std::endl;
         }
         // then check all four AABB
         bool hit = false;
@@ -80,7 +79,6 @@ struct OBBox final : public Hittable
             if (aabb[i].Intersect(*r))
             {
                 hit = true;
-                // std::cout << r->m_tmax << std::endl;
                 // record_id(i);
             }
         }
@@ -92,12 +90,11 @@ struct OBBox final : public Hittable
     {
         m_hit_id = hit_id;
     }
-*/
+    */
     Vector3 get_intersection_normal(const Ray &ray) const
     {
         const Ray *r;
         // First rotate the ray
-        //std::cout<< "original ray ============\n" << ray <<std::endl;
         if (m_o_axis == Oriented_axis::NA || m_rotate_radian == 0)
         {
             r = &ray;
@@ -105,7 +102,7 @@ struct OBBox final : public Hittable
         else
         {
             const Ray new_ray = Ray(Rotate(m_o_axis, m_rotate_radian, ray.m_o, m_origin),
-                              Rotate(m_o_axis, m_rotate_radian, ray.m_d), ray.m_tmin, ray.m_tmax, ray.m_depth);
+                                    Rotate(m_o_axis, m_rotate_radian, ray.m_d), ray.m_tmin, ray.m_tmax, ray.m_depth);
             r = &new_ray;
         }
         short hit_id;
@@ -121,6 +118,11 @@ struct OBBox final : public Hittable
         Vector3 inter_normal = aabb[hit_id].get_intersection_normal(*r);
         // return the rotated normal
         return inter_normal;
+    }
+
+    Vector3 get_color(Vector3 intersect_point) const
+    {
+        return Vector3();
     }
 
 }; // namespace smallpt
