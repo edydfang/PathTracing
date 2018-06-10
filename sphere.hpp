@@ -22,7 +22,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 //-------------------------------------------------------------------------
 // Declarations and Definitions: Sphere
@@ -114,4 +114,4 @@ struct Sphere final : public Hittable
 				 // Vector3 m_f; // reflection
 				 // Reflection_t m_reflection_t;
 };
-} // namespace smallpt
+} // namespace pathtracing

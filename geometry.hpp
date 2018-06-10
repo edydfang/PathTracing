@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 
 //-------------------------------------------------------------------------
@@ -75,4 +75,4 @@ struct Ray final
 	mutable double m_tmin, m_tmax;
 	uint32_t m_depth;
 };
-} // namespace smallpt
+} // namespace pathtracing

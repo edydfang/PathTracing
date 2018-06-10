@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 Hittable *g_spheres[] = {
 	new AABB(AABB_t::YOZ, Vector3(1, 0, 0), Vector3(1, 81.6, 170), Vector3(), Vector3(0.12, 0.45, 0.15), Reflection_t::Diffuse),		  // Left
@@ -45,7 +45,7 @@ Hittable *g_spheres[] = {
 	new Sphere(16.5, Vector3(73, 16.5, 30), Vector3(), Vector3(0.999), Reflection_t::Specular),											  //Mentol/Mirror
 	new Sphere(16.5, Vector3(25, 16.5, 125), Vector3(), Vector3(0.999), Reflection_t::Refractive),										  //Glass
 };
-// namespace smallpt
+// namespace pathtracing
 
 bool Intersect(const Ray &ray, size_t &id) noexcept
 {
@@ -153,8 +153,8 @@ inline void Render(uint32_t nb_samples) noexcept
 {
 	RNG rng; // random number generator
 
-	const uint32_t w = 320; //640
-	const uint32_t h = 240; //480
+	const uint32_t w = 640; //640
+	const uint32_t h = 480; //480
 	const Vector3 eye = Vector3(50.0, 52.0, 295.6);
 	const Vector3 gaze = Normalize(Vector3(0.0, -0.05, -1.0)); // -0.042612
 	const double fov = 0.7; // 0.5135
@@ -198,12 +198,12 @@ inline void Render(uint32_t nb_samples) noexcept
 
 	delete[] Ls;
 }
-} // namespace smallpt
+} // namespace pathtracing
 
 int main(int argc, char *argv[])
 {
 	const uint32_t nb_samples = (argc == 2) ? atoi(argv[1]) / 4 : 20; // 1
-	smallpt::Render(nb_samples);
+	pathtracing::Render(nb_samples);
 
 	return 0;
 }

@@ -14,7 +14,7 @@
 
 #pragma endregion
 
-namespace smallpt
+namespace pathtracing
 {
 using std::move;
 struct OBBox final : public Hittable
@@ -125,5 +125,5 @@ struct OBBox final : public Hittable
         return Vector3();
     }
 
-}; // namespace smallpt
-} // namespace smallpt
+}; // namespace pathtracing
+} // namespace pathtracing

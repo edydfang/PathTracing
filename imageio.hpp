@@ -23,7 +23,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 
 inline void WritePPM(uint32_t w, uint32_t h,
@@ -52,4 +52,4 @@ inline void WritePPM(uint32_t w, uint32_t h,
 
 	fclose(fp);
 }
-} // namespace smallpt
+} // namespace pathtracing

@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 
 constexpr double Reflectance0(double n1, double n2)
@@ -75,4 +75,4 @@ inline const Vector3 IdealSpecularTransmit(
 		return d_Tr;
 	}
 }
-} // namespace smallpt
+} // namespace pathtracing

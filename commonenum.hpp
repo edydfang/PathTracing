@@ -1,6 +1,6 @@
 #pragma once
 
-namespace smallpt
+namespace pathtracing
 {
 enum struct AABB_t
 {
@@ -16,4 +16,4 @@ enum struct Oriented_axis
     Z_axis,
     NA
 };
-} // namespace smallpt
+} // namespace pathtracing

@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 
 inline const Vector3 UniformSampleOnSphere(
@@ -44,4 +44,4 @@ inline const Vector3 CosineWeightedSampleOnHemisphere(
 	const double phi = 2.0 * g_pi * u2;
 	return Vector3(cos(phi) * sin_theta, sin(phi) * sin_theta, cos_theta);
 }
-} // namespace smallpt
+} // namespace pathtracing

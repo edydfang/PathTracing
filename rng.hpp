@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 
 class RNG final
@@ -66,4 +66,4 @@ class RNG final
 	std::default_random_engine m_generator;
 	std::uniform_real_distribution<double> m_distribution;
 };
-} // namespace smallpt
+} // namespace pathtracing

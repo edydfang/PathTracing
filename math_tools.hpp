@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 
 //-------------------------------------------------------------------------
@@ -38,4 +38,4 @@ inline uint8_t ToByte(double x, double gamma = 2.2) noexcept
 	return static_cast<uint8_t>(Clamp(255.0 * pow(x, 1 / gamma),
 									  0.0, 255.0));
 }
-} // namespace smallpt
+} // namespace pathtracing

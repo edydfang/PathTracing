@@ -28,7 +28,7 @@ using std::sin;
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace smallpt
+namespace pathtracing
 {
 
 //-------------------------------------------------------------------------
@@ -400,4 +400,4 @@ inline const Vector3 Rotate(Oriented_axis r_axis, double radian, Vector3 vec, Ve
 	rotated_vec[c] = u*sin(radian) + v*cos(radian) + axis[c];
 	return rotated_vec;
 }
-} // namespace smallpt
+} // namespace pathtracing

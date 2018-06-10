@@ -11,7 +11,7 @@
 #include <iostream>
 #pragma endregion
 
-namespace smallpt
+namespace pathtracing
 {
 using std::move;
 struct AABB final : public Hittable
@@ -109,5 +109,5 @@ struct AABB final : public Hittable
 		return Hittable::m_texture->get_color(u, v);
 	}
 
-}; // namespace smallpt
-} // namespace smallpt
+}; // namespace pathtracing
+} // namespace pathtracing

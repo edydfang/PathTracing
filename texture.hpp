@@ -4,7 +4,7 @@
 #include <iostream>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-namespace smallpt
+namespace pathtracing
 {
 struct Texture
 {
@@ -64,4 +64,4 @@ struct Image : public Texture
     unsigned char *data;
     bool m_updown;
 };
-} // namespace smallpt
+} // namespace pathtracing

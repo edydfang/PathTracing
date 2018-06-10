@@ -19,5 +19,7 @@ endif()
 # 并将名称保存到 DIR_SRCS 变量
 aux_source_directory(. DIR_SRCS)
 
+configure_file(./res/ARU.jpg ./ARU.jpg COPYONLY)
+
 # 指定生成目标
 add_executable(rayTracing rayTracing.cpp)

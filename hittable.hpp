@@ -11,7 +11,7 @@
 
 #pragma endregion
 
-namespace smallpt
+namespace pathtracing
 {
 struct Hittable
 {
@@ -27,4 +27,4 @@ struct Hittable
     bool m_texture_enable = false;
     Reflection_t m_reflection_t;
 };
-} // namespace smallpt
+} // namespace pathtracing
