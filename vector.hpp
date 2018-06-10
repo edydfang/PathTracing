@@ -6,6 +6,7 @@
 #pragma region
 
 #include "math_tools.hpp"
+#include "commonenum.hpp"
 
 #pragma endregion
 
@@ -16,10 +17,13 @@
 
 #include <algorithm>
 #include <iostream>
+#include <cmath>
 
 #pragma endregion
 
 using std::isnan;
+using std::cos;
+using std::sin;
 
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
@@ -370,5 +374,30 @@ inline const Vector3 Normalize(const Vector3 &v) noexcept
 {
 	const double a = 1.0 / v.Norm2();
 	return a * v;
+}
+
+inline const Vector3 Rotate(Oriented_axis r_axis, double radian, Vector3 vec, Vector3 axis = Vector3())
+{
+	short a, b, c;
+	switch (r_axis)
+	{
+	case Oriented_axis::X_axis:
+		a = 0;
+		break;
+	case Oriented_axis::Y_axis:
+		a = 1;
+		break;
+	default:
+		a = 2;
+	}
+	b = (a + 1) % 3;
+	c = (b + 1) % 3;
+	Vector3 rotated_vec = Vector3(vec);
+	double u,v;
+	u = vec[b] - axis[b];
+	v = vec[c] - axis[c];
+	rotated_vec[b] = u*cos(radian) - v*sin(radian) + axis[b];
+	rotated_vec[c] = u*sin(radian) + v*cos(radian) + axis[c];
+	return rotated_vec;
 }
 } // namespace smallpt

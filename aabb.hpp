@@ -7,7 +7,8 @@
 
 #include "geometry.hpp"
 #include "hittable.hpp"
-
+#include "commonenum.hpp"
+#include <iostream>
 #pragma endregion
 
 namespace smallpt
@@ -59,6 +60,10 @@ struct AABB final : public Hittable
 		// ref: http://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
 		// get intersection with planer
 		double t_possible;
+		if (ray.m_d[exclusive_axis] == 0)
+		{
+			return false;
+		}
 		t_possible = (bounds[0][exclusive_axis] - ray.m_o[exclusive_axis]) / ray.m_d[exclusive_axis];
 
 		// out of range
@@ -77,6 +82,7 @@ struct AABB final : public Hittable
 		{
 			return false;
 		}
+		// std::cout << "gg" << t_possible << std::endl;
 		ray.m_tmax = t_possible;
 		return true;
 	}

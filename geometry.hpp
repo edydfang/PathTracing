@@ -19,21 +19,6 @@ namespace smallpt
 // Declarations and Definitions: Reflection_t
 //-------------------------------------------------------------------------
 
-enum struct AABB_t
-{
-	XOZ,
-	XOY,
-	YOZ
-};
-
-enum struct Oriented_axis
-{
-	X_axis,
-	Y_axis,
-	Z_axis,
-	NA
-};
-
 enum struct Reflection_t
 {
 	Diffuse,

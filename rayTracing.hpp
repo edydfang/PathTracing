@@ -4,6 +4,7 @@
 #include "targetver.h"
 #endif
 
+#include "commonenum.hpp"
 #include "sampling.hpp"
 #include "sphere.hpp"
 #include "aabb.hpp"

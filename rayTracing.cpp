@@ -1,5 +1,6 @@
 #pragma region
 #include "rayTracing.hpp"
+#include "math_tools.hpp"
 #pragma endregion
 //-----------------------------------------------------------------------------
 // System Includes
@@ -32,7 +33,7 @@ Hittable *g_spheres[] = {
 	new AABB(AABB_t::XOZ, Vector3(1, 0, 0), Vector3(99, 0, 170), Vector3(), Vector3(0.73), Reflection_t::Diffuse),					 // Buttom
 	new AABB(AABB_t::XOZ, Vector3(1, 81.6, 0), Vector3(99, 81.6, 170), Vector3(), Vector3(0.73), Reflection_t::Diffuse),			 // Top
 	new AABB(AABB_t::XOZ, Vector3(30, 81.6 - .27, 60), Vector3(75, 81.6 - .27, 100), Vector3(12), Vector3(), Reflection_t::Diffuse), // Light
-	new OBBox(Vector3(30, 0, 50), Vector3(30), Vector3(), Vector3(1, 0, 0), Reflection_t::Diffuse),								 // cube
+	new OBBox(Vector3(30, 0, 50), Vector3(30), Vector3(), Vector3(1, 0, 0), Reflection_t::Diffuse, g_pi / 4, Oriented_axis::Y_axis), // cube
 	new Sphere(16.5, Vector3(27, 16.5, 47), Vector3(), Vector3(0.999), Reflection_t::Specular),										 //Mirror
 	new Sphere(16.5, Vector3(73, 16.5, 78), Vector3(), Vector3(0.999), Reflection_t::Refractive),									 //Glass
 };																																	 // namespace smallpt
