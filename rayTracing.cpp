@@ -35,7 +35,7 @@ Hittable *g_spheres[] = {
 	new AABB(AABB_t::XOZ, Vector3(1, 0., 0), Vector3(99, 0., 170), Vector3(), new Strip(), Reflection_t::Diffuse),					  // Buttom
 	new AABB(AABB_t::XOZ, Vector3(1, 81.6, 0), Vector3(99, 81.6, 170), Vector3(), Vector3(0.73), Reflection_t::Diffuse),				  // Top
 	new AABB(AABB_t::XOZ, Vector3(40, 81.6 - .27, 75), Vector3(60, 81.6 - .27, 95), Vector3(30), Vector3(), Reflection_t::Diffuse),	  // Light
-	new AABB(AABB_t::XOZ, Vector3(50, 0.01, 100), Vector3(70, 0.01, 120), Vector3(), Vector3(1), Reflection_t::Diffuse), // Paper
+	new AABB(AABB_t::XOZ, Vector3(50, 0.01, 70), Vector3(70, 0.01, 120), Vector3(), Vector3(1), Reflection_t::Diffuse), // Paper
 	new OBBox(Vector3(40, 0, 40), Vector3(20), Vector3(), Vector3(1, 0.2, 0.6), Reflection_t::Diffuse, g_pi / 4, Oriented_axis::Y_axis),	  // pick cube
 	new OBBox(Vector3(80, 0, 105), Vector3(12), Vector3(), Vector3(1, 0, 0), Reflection_t::Diffuse, g_pi / 4, Oriented_axis::Y_axis),	  // red cube
 	new OBBox(Vector3(85, 0, 125), Vector3(10), Vector3(), Vector3(1, 1, 0), Reflection_t::Diffuse, g_pi / 5, Oriented_axis::Y_axis),	  // yellow cube
@@ -153,11 +153,11 @@ inline void Render(uint32_t nb_samples) noexcept
 {
 	RNG rng; // random number generator
 
-	const uint32_t w = 640; //640
-	const uint32_t h = 480; //480
+	const uint32_t w = 1024; //640
+	const uint32_t h = 768; //480
 	const Vector3 eye = Vector3(50.0, 52.0, 295.6);
-	const Vector3 gaze = Normalize(Vector3(0.0, -0.05, -1.0)); // -0.042612
-	const double fov = 0.7; // 0.5135
+	const Vector3 gaze = Normalize(Vector3(0.0, -0.08, -1.0)); // -0.042612
+	const double fov = 0.55; // 0.5135
 	const Vector3 cx = Vector3(w * fov / h, 0.0, 0.0);
 	const Vector3 cy = Normalize(cx.Cross(gaze)) * fov;
 
