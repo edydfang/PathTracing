@@ -28,3 +28,11 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 - [x] Shadow
 - [x] Supersampling
 - [ ] Spatial data stucture
+
+## Reference
+
+- http://www.kevinbeason.com/smallpt/
+- https://eleni.mutantstargoat.com/portfolio/prj/pt.html
+- http://cosinekitty.com/raytrace/contents.html
+- https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work
+- https://www.siggraph.org//education/materials/HyperGraph/raytrace/rtrace0.htm
