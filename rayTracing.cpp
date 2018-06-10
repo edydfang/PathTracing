@@ -153,8 +153,8 @@ inline void Render(uint32_t nb_samples) noexcept
 {
 	RNG rng; // random number generator
 
-	const uint32_t w = 1024; //640
-	const uint32_t h = 768; //480
+	const uint32_t w = 320;//640
+	const uint32_t h = 240; //480
 	const Vector3 eye = Vector3(50.0, 52.0, 295.6);
 	const Vector3 gaze = Normalize(Vector3(0.0, -0.08, -1.0)); // -0.042612
 	const double fov = 0.55; // 0.5135

@@ -21,10 +21,10 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 ## TODO List
 
-- [ ] Scene construction
-- [ ] Colour
-- [ ] Reflection
-- [ ] Trasparency
-- [ ] Shadow
-- [ ] Supersampling
+- [x] Scene construction
+- [x] Colour
+- [x] Reflection
+- [x] Trasparency
+- [x] Shadow
+- [x] Supersampling
 - [ ] Spatial data stucture
