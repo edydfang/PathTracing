@@ -35,7 +35,7 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 100 samples per pixel
 
-![10000spp](/home/edwardfang/repo/ray_tracing_project/PathTracing/res/10000spp.png)
+![10000spp](./res/10000spp.png)
 
 10000 samples per pixel
 
