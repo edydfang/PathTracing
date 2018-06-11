@@ -29,6 +29,16 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 - [x] Supersampling
 - [ ] Spatial data stucture
 
+## Rendering Preview
+
+![100spp](./res/100spp.png)
+
+100 samples per pixel
+
+![10000spp](/home/edwardfang/repo/ray_tracing_project/PathTracing/res/10000spp.png)
+
+10000 samples per pixel
+
 ## Reference
 
 - http://www.kevinbeason.com/smallpt/
