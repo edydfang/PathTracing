@@ -39,6 +39,10 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 10000 samples per pixel
 
+## Licence
+
+MIT
+
 ## Reference
 
 - http://www.kevinbeason.com/smallpt/
@@ -46,3 +50,4 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 - http://cosinekitty.com/raytrace/contents.html
 - https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work
 - https://www.siggraph.org//education/materials/HyperGraph/raytrace/rtrace0.htm
+- https://github.com/matt77hias/cpp-smallpt
